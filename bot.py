@@ -33,7 +33,11 @@ async def repeat(ctx, *, message):
 
 @bot.command(name='coleslaw')
 async def coleslaw(ctx):
-    await ctx.send("hi i am coleslaw, i looksmaxx everyday and goon to kamala harri's gyat!")
+    await ctx.send("hi i am coleslaw, i looksmaxx everyday and is a mechanically gifted valorant competitve player!")
+
+@bot.command(name='foozi')
+async def foozi(ctx):
+    await ctx.send("hi i am foozi, i live in joceys dungeon and feast on rat droppings!")
 
 
 
