@@ -36,10 +36,40 @@ async def coleslaw(ctx):
     await ctx.send("hi i am coleslaw, i looksmaxx everyday and goon to kamala harri's gyat!")
 
 
+# Example commands
+# @bot.command(name="banglatts", help="Converts text to Bangladeshi-accented voice.")
+# async def bangla_tts(ctx, *, text: str):
+#     await ctx.send(f"Converting text '{text}' to Bangladeshi-accented voice...")
 
-# @bot.event
-# async def on_ready():
-#     print(f"Logged in as {bot.user}")
+@bot.command(name="hello", help="Greets the user.")
+async def hello(ctx):
+    await ctx.send(f"Hello, {ctx.author}!")
+
+@bot.command(name="info", help="Provides information about the bot.")
+async def info(ctx):
+    await ctx.send("I'm a bot that converts text to Bangladeshi-accented voice!")
+
+# Custom help command to display an embedded list of commands
+@bot.command(name="help")
+async def custom_help(ctx):
+    embed = discord.Embed(
+        title="Bot Commands",
+        description="Here are the commands you can use with this bot:",
+        color=discord.Color.blue()
+    )
+
+    # Add each command with its description
+    for command in bot.commands:
+        embed.add_field(
+            name=f"!{command.name}",
+            value=command.help,
+            inline=False
+        )
+
+    embed.set_footer(text="Type !<command> for more details on each command.")
+    
+    await ctx.send(embed=embed)
+
 
 # @bot.command(name="banglatts")
 # async def bangla_tts(ctx, *, text: str):

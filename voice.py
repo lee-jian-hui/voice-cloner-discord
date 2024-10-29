@@ -19,24 +19,3 @@ app = FastAPI()
 class TextToConvert(BaseModel):
     text: str
 
-@app.post("/generate-voice")
-async def generate_voice(data: TextToConvert):
-    file_id = str(uuid.uuid4())
-    audio_path = f"/tmp/{file_id}.wav"
-    
-    # Generate the audio file from text
-    try:
-        tts.tts_to_file(text=data.text, file_path=audio_path)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error generating audio: {str(e)}")
-    
-    return {"audio_path": audio_path}
-
-
-def start_fastapi():
-    uvicorn.run(app, host="0.0.0.0", port=8000)
-
-
-if __name__ == "__main__":
-    start_fastapi()
-
